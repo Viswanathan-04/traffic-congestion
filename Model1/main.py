@@ -106,21 +106,21 @@ while True:
             if zoneC1counter.count(id) == 0:
                 zoneC1counter.append(id)
 
-        if len(zoneA1counter)-len(zoneA2counter)<1:
+        if len(zoneA1counter)-len(zoneA2counter)<3:
             cv2.circle(frame,(970,90),15,(0,255,0),-1)
         else:
             cv2.circle(frame,(970,90),15,(0,0,255),-1)
         
         # cv2.circle(frame,(970,130),15,(0,255,255),-1)
 
-        if len(zoneC1counter)-len(zoneC2counter)<1:
+        if abs(len(zoneC1counter)-len(zoneC2counter))<3:
             cv2.circle(frame,(970,170),15,(0,255,0),-1)
         else:
             cv2.circle(frame,(970,170),15,(0,0,255),-1)
 
         cvzone.putTextRect(frame, f'LANE A Vehicles ={len(zoneA1counter)-len(zoneA2counter)}', [1000, 99], thickness=4, scale=2.3, border=2)
         # cvzone.putTextRect(frame, f'LANE B Vehicles ={len(zoneB1counter)-len(zoneB2counter)}', [1000, 140], thickness=4, scale=2.3, border=2)
-        cvzone.putTextRect(frame, f'LANE B Vehicles ={len(zoneC2counter)-len(zoneC1counter)}', [1000, 180], thickness=4, scale=2.3, border=2)
+        cvzone.putTextRect(frame, f'LANE B Vehicles ={abs(len(zoneC2counter)-len(zoneC1counter))}', [1000, 180], thickness=4, scale=2.3, border=2)
 
     cv2.imshow('frame', frame)
     cv2.waitKey(1)
